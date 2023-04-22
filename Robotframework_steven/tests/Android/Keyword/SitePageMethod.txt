@@ -1,0 +1,13 @@
+*** Setting ***
+Library    AppiumLibrary
+Resource    ../Keyword/CommonMethod.txt
+Resource    ../Variable/SitePageVariable.txt
+Resource    ../Keyword/SitePageMethod.txt
+Resource    ../Keyword/CategoryPageMethod.txt
+
+*** Keywords ***
+Enter site page from index page
+    [Arguments]    ${sign_name}    ${site_name}
+    Click category button
+    Click category on left function column of category page    ${sign_name}
+    Click Element After It Is Visible    ${site_name}    5

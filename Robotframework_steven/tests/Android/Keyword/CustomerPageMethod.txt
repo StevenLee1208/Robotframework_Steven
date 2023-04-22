@@ -1,0 +1,6 @@
+*** Setting ***
+Library    AppiumLibrary
+Resource    ../Keyword/CommonMethod.txt
+Resource    ../Variable/CartPageVariable.txt
+
+*** Keywords ***

@@ -1,0 +1,9 @@
+*** Setting ***
+Library    AppiumLibrary
+Resource    ../Keyword/CommonMethod.txt
+Resource    ../Variable/CartPageVariable.txt
+
+*** Keywords ***
+Back to index page
+    Click Element After It Is Visible    ${cart_button_back}    5
+    Wait Until Element Should Be Visible    ${index_image_pchome24h}    5

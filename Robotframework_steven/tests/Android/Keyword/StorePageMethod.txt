@@ -1,0 +1,21 @@
+*** Setting ***
+Library    AppiumLibrary
+Resource    ../Keyword/CommonMethod.txt
+Resource    ../Keyword/CategoryPageMethod.txt
+Resource    ../Variable/SignPageVariable.txt
+Resource    ../Variable/StorePageVariable.txt
+Resource    ../Variable/RegionPageVariable.txt
+Resource    ../Variable/CategoryPageVariable.txt
+
+*** Keywords ***
+Enter store page from index page
+    [Arguments]    ${sign_name}    ${region_name}    ${store_name}    ${store_name_category}
+    Click category button
+    Click category on left function column of category page    ${sign_name}
+    Click Element After It Is Visible    ${region_name}    5
+    Click Element After It Is Visible    ${region_text_productCategory}    5
+    Scroll from locatorA to locatorB if keyword is unvisible    ${store_name}    ${region_button_productCategorySeven}    ${region_button_productCategoryOne}
+    Click Element After It Is Visible    ${store_name}    5
+    Click Element After It Is Visible    ${store_name_category}    5
+    ${store_name_category_text}=    Get Text    ${store_name_category}
+    Set Suite Variable    ${STORE_NAME_CATEGORY_TEXT}    ${store_name_category_text}

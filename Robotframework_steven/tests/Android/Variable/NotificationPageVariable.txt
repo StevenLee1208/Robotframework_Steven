@@ -1,0 +1,4 @@
+*** variables ***
+${notification_button_activity}    xpath=//android.widget.TextView[contains(@text, '活動通知')]
+${notification_button_order}    xpath=//android.widget.TextView[contains(@text, '訂單通知')]
+${notification_button_qa}    xpath=//android.widget.TextView[contains(@text, '問答紀錄')]

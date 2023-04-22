@@ -1,0 +1,18 @@
+*** Setting ***
+Library    AppiumLibrary
+Resource    ../Keyword/CommonMethod.txt
+Resource    ../Keyword/IndexPageMethod.txt
+Resource    ../Variable/ProductPageVariable.txt
+
+*** Keywords ***
+Enter Product Page In Keyword Search Way
+    [Arguments]    ${keyword}
+    Click search box
+    Input Text    ${search_textbox_search}    ${keyword}
+    ${product_option_search}    Set Variable    xpath=//android.widget.TextView[@text="${keyword}"]
+    Click Element After It Is Visible    ${product_option_search}    10
+    Wait Until Element Should Be Visible    ${search_text_firstProductName}    10
+    ${product_price_text} =    Get Text    ${search_text_firstProductPrice}
+    Click Element After It Is Visible    ${search_text_firstProductName}    10
+    Wait Until Element Should Be Visible    ${product_text_productPrice}    10
+    Element Should Contain Text    ${product_text_productPrice}    ${product_price_text}

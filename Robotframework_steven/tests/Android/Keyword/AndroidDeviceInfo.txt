@@ -1,0 +1,58 @@
+*** Setting ***
+Library    AppiumLibrary
+Library    Process
+Library    String
+Library    ../AndroidBaseUICore.py
+
+*** Variables ***
+${devicename}
+${port}
+
+*** Keywords ***
+Android Open PChome24h Application
+    @{DeviceInfo} =    AndroidBaseUICore.GetDeviceInfo    ${devicename}    ${port}
+    Open Application    ${DeviceInfo}[0]    platformName=${DeviceInfo}[1]    platformVersion=${DeviceInfo}[2]    deviceName=${DeviceInfo}[3]    appPackage=${DeviceInfo}[4]    appActivity=${DeviceInfo}[5]
+
+Current GFX
+    ${result}=    Run Process    adb    shell    dumpsys    gfxinfo    com.PChome.Shopping
+    Should Be Equal As Strings    ${result.rc}    0
+    Log    ${result.stdout}
+    Log To Console    ${result.stdout}
+
+Current battery status
+    ${result}=    Run Process    adb    shell    dumpsys    battery
+    Should Be Equal As Strings    ${result.rc}    0
+    Log    ${result.stdout}
+    Log To Console    ${result.stdout}
+
+Current CPU
+    ${result}=    Run Process    adb    shell    dumpsys    gfxinfo    com.PChome.Shopping
+    Should Be Equal As Strings    ${result.rc}    0
+    Log    ${result.stdout}
+    Log To Console    ${result.stdout}
+
+Start Battery Monitoring
+    # Enable keywords for background execution, use "Run Keyword If" to avoid repeated opening
+    ${monitoring_running}=    Run Keyword And Return Status    Keyword Should Exist    Battery Monitoring
+    Run Keyword Unless    ${monitoring_running}    Battery Monitoring
+
+Stop Battery Monitoring
+    # Close keywords for background execution, use "Run Keyword If" to avoid closing non-existent keywords
+    ${monitoring_running}=    Run Keyword And Return Status    Keyword Should Exist    Battery Monitoring
+    Run Keyword If    ${monitoring_running}    Terminate All Processes
+
+Battery Monitoring
+    # Monitor battery status and display message, use "Run Keyword If" to avoid failure due to keyword interruption
+    ${monitoring_running}=    Run Keyword And Return Status    Keyword Should Exist    Battery Monitoring
+    Exit For Loop If    not ${monitoring_running}
+    ${result}=    Run Process    adb    shell    dumpsys battery
+    Should Be Equal As Strings    ${result.rc}    0
+    Log To Console    Battery Service state: ${result.stdout}
+    Log    Battery level: ${result.stdout.splitlines()[7].split(": ")[1]}
+    Log To Console    ${result.stdout.splitlines()[7].split(": ")[1]}
+    Sleep    5s
+    Run Keyword If    ${monitoring_running}    Battery Monitoring
+
+Android Open Chrome Browser
+    @{DeviceInfo} =    AndroidBaseUICore.GetDeviceInfo    ${devicename}    ${port}
+    Open Application    ${DeviceInfo}[0]    platformName=${DeviceInfo}[1]    platformVersion=${DeviceInfo}[2]    deviceName=${DeviceInfo}[3]    appPackage=com.android.chrome   appActivity=com.google.android.apps.chrome.Main

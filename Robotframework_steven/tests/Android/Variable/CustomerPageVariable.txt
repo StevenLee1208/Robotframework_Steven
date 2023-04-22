@@ -1,0 +1,11 @@
+*** variables ***
+${customer_text_coins}    xpath=//android.widget.TextView[@text='P幣']
+${customer_text_cashPoints}    xpath=//android.widget.TextView[@text='現金積點']
+${customer_text_topup}    xpath=//android.widget.TextView[@text='儲值']
+${customer_text_giftCertificate}    xpath=//android.widget.TextView[@text='禮券']
+${customer_button_setting}    xpath=//
+${customer_text_customer}    xpath=//
+${customer_button_orderTracking}    xpath=//
+${customer_button_rerurnRefund}    xpath=//
+${customer_button_trackingList}    xpath=//
+${customer_text_memberVersion}    xpath=//android.widget.TextView[@content-desc="accessibilityLabel_version"]

@@ -1,0 +1,9 @@
+*** variables ***
+${index_textbox_search}    xpath=//android.widget.EditText[@text='輸入您想找的商品']
+${index_button_history}    xpath=//
+${index_button_totop}    xpath=//
+${index_image_pchome24h}    xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[1]
+${search_textbox_search}    xpath=//android.widget.EditText[@text='搜尋想要的商品']
+${search_text_dailyRecommendation}    xpath=//android.widget.TextView[@text='每日推薦']
+${search_text_hotSearch}    xpath=//android.widget.TextView[@text='熱門搜尋']
+${search_button_back}    xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[2]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup

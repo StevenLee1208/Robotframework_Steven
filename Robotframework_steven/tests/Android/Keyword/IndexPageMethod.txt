@@ -1,0 +1,15 @@
+*** Setting ***
+Library    AppiumLibrary
+Resource    ../Keyword/CommonMethod.txt
+Resource    ../Variable/IndexPageVariable.txt
+
+*** Keywords ***
+Click search box
+    Click Element After It Is Visible    ${index_textbox_search}    5
+    ${is_visible} =  Run Keyword And Return Status    Page Should Contain Element    ${search_textbox_search}
+    Run Keyword If    ${is_visible}==${False}    Click Element After It Is Visible    ${index_textbox_search}    5
+    Wait Until Element Should Be Visible    ${search_textbox_search}    5
+
+Click back button on search page
+    Click Element After It Is Visible    ${search_button_back}    5
+    Wait Until Element Should Be Visible    ${index_textbox_search}    5

@@ -1,0 +1,93 @@
+*** Setting ***
+Library    AppiumLibrary
+Resource    ../Variable/CommonVariable.txt
+
+*** Keywords ***
+Wait Until Element Should Be Visible
+    [Arguments]    ${locator}    ${timeout}
+    Wait Until Element Is Visible    ${locator}    timeout=${timeout}
+    Element Should Be Visible    ${locator}
+
+Click Element After It Is Visible
+    [Arguments]    ${locator}    ${timeout}
+    Wait Until Element Is Visible    ${locator}    timeout=${timeout}
+    Click Element    ${locator}
+
+Click Element If It Is Visible
+    [Arguments]    ${locator}
+    TRY
+        Click Element After It Is Visible    ${locator}    5
+    EXCEPT
+        Log    PASS
+    END
+
+Input Text After It Is Visible
+    [Arguments]    ${locator}    ${text}    ${timeout}
+    Wait Until Element Is Visible    ${locator}    timeout=${timeout}
+    Input Text    ${locator}    ${text}
+
+Check If Login Status And Login
+    Sleep    8
+    ## Ensure user is login status
+    ${is_visible} =  Run Keyword And Return Status    Page Should Contain Element    ${login_button_login}
+    Run Keyword If    ${is_visible}==${True}    Login By Account
+
+Close Ad
+    Sleep    3
+    Click Element If It Is Visible    ${common_button_neverAsk}
+    Sleep    3
+    Click Element If It Is Visible    ${common_button_closeAd}
+    Sleep    3
+    Click Element If It Is Visible    ${common_button_neverAsk}
+
+Login By Account
+    Input Text After It Is Visible    ${login_textbox_account}    pchomeqatest@gmail.com    5
+    Input Text After It Is Visible    ${login_textbox_password}    pchomeqa    5
+    Click Element After It Is Visible    ${login_button_login}    2
+
+Logout
+    Click Element After It Is Visible    ${customer_button_edit}    5
+    Click Element After It Is Visible    ${customer_button_logout}    5
+    Click Element After It Is Visible    ${customer_button_logoutYes}    5
+
+Click index button
+    Click Element After It Is Visible    ${common_button_index}    5
+    Wait Until Element Should Be Visible    ${index_textbox_search}    5
+
+Click category button
+    Click Element After It Is Visible    ${common_button_category}    5
+    ${is_visible} =  Run Keyword And Return Status    Page Should Contain Element    ${category_textbox_search}
+    Run Keyword If    ${is_visible}==${False}    Click Element After It Is Visible    ${common_button_category}    5
+    Wait Until Element Should Be Visible    ${category_textbox_search}    5
+
+Click notification button
+    Click Element After It Is Visible    ${common_button_notification}    5
+    ${is_visible} =  Run Keyword And Return Status    Page Should Contain Element    ${notification_text_notification}
+    Run Keyword If    ${is_visible}==${False}    Click Element After It Is Visible    ${common_button_notification}    5
+    Wait Until Element Should Be Visible    ${notification_text_notification}    5
+
+Click cart button
+    Click Element After It Is Visible    ${common_button_cart}    5
+    ${is_visible} =  Run Keyword And Return Status    Page Should Contain Element    ${common_button_cart}
+    Run Keyword If    ${is_visible}==${True}   Click Element After It Is Visible    ${common_button_cart}    5
+    Wait Until Element Should Be Visible    ${login_button_login}    15
+
+Click customer button
+    Click Element After It Is Visible    ${common_button_customer}    5
+    ${is_visible} =  Run Keyword And Return Status    Page Should Contain Element    ${customer_text_customer}
+    Run Keyword If    ${is_visible}==${False}    Click Element After It Is Visible    ${common_button_customer}    5
+    Wait Until Element Should Be Visible    ${customer_text_customer}    5
+
+Scroll from locatorA to locatorB if keyword is unvisible
+    [Arguments]    ${keyword}    ${locatorA}    ${locatorB}
+    ${is_visible} =  Run Keyword And Return Status    Page Should Contain Element    ${keyword}
+    Run Keyword If    ${is_visible}==${False}    Scroll    ${locatorA}    ${locatorB}
+
+Scroll Until Element Found
+    [Arguments]    ${locator}
+    FOR    ${i}    IN RANGE    20
+        ${is_found}=    Run Keyword And Return Status    Page Should Contain Element    ${locator}
+        Exit For Loop If    '${is_found}' == 'True'
+        Run Keyword If    '${i}' == '19'    Fail    Could not find element
+        Swipe    420    1200    420    300    duration=1000
+    END

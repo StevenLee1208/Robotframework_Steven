@@ -1,0 +1,12 @@
+*** Setting ***
+Library    AppiumLibrary
+Resource    ../Keyword/CommonMethod.txt
+Resource    ../variable/DeepLinkVariable.txt
+
+*** Keywords ***
+Search item in Web
+    [Arguments]    ${product_name}
+    Go To Url    https://www.google.com/search?q=${product_name}
+
+Reload search Keyword
+    Search item in Web    ${Keyword}

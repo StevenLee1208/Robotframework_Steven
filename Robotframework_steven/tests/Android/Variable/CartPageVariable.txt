@@ -1,0 +1,18 @@
+*** variables ***
+${cart_button_back}    xpath=//*[@resource-id="android:id/content"]/android.widget.FrameLayout[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]
+${cart_button_backToStore}    xpath=//android.widget.TextView[@text='回賣場繼續選購']
+${cart_button_nextStep}    xpath=//android.view.View[contains(@text, '下一步')]
+${cart_text_buylist}    xpath=//android.view.View[@text='購買清單']
+${cart_text_paymentMethod}    xpath=//android.view.View[@text='付款方式']
+${cart_text_buyerInfo}    xpath=//android.view.View[@text='購買人資訊']
+${cart_text_complete}    xpath=//android.view.View[@text='完成']
+${index_image_pchome24h}    xpath=/hierarchy/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.LinearLayout/android.widget.FrameLayout/android.widget.FrameLayout/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup/android.view.ViewGroup[2]/android.view.ViewGroup[1]
+${cart_button_shippingOptionDescription}    xpath=//
+${cart_button_closeDescription}    xpath=//
+${cart_radiobutton_homeDelivery}    xpath=//
+${cart_radiobutton_711}    xpath=//
+${cart_radiobutton_family}    xpath=//
+${cart_radiobutton_hiLife}    xpath=//
+${cart_radiobutton_okMart}    xpath=//
+${cart_radiobutton_iBox}    xpath=//
+${cart_radiobutton_711LowTemprature}    xpath=//

@@ -1,0 +1,12 @@
+*** Setting ***
+Library    AppiumLibrary
+Resource    ../Keyword/CommonMethod.txt
+Resource    ../Variable/SignPageVariable.txt
+Resource    ../Keyword/CategoryPageMethod.txt
+
+*** Keywords ***
+Enter region page from index page
+    [Arguments]    ${sign_name}    ${region_name}
+    Click category button
+    Click category on left function column of category page    ${sign_name}
+    Click Element If It Is Visible    ${region_name}

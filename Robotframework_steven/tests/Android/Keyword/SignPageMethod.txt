@@ -1,0 +1,12 @@
+*** Setting ***
+Library    AppiumLibrary
+Resource    ../Keyword/CommonMethod.txt
+Resource    ../Variable/SignPageVariable.txt
+Resource    ../Keyword/CategoryPageMethod.txt
+
+*** Keywords ***
+Enter sign page from index page
+    [Arguments]    ${locator}
+    Click category button
+    Click category on left function column of category page    ${locator}
+    Click see more button in the upper right corner of category page

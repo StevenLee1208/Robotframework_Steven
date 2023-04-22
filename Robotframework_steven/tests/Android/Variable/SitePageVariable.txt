@@ -1,0 +1,5 @@
+*** variables ***
+${site_button_back}    xpath=//*[@resource-id="android:id/content"]/android.widget.FrameLayout[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[1]/android.view.ViewGroup[2]/android.view.ViewGroup[1]/android.view.ViewGroup[1]
+${site_button_share}    xpath=//
+${site_button_more}    xpath=//
+${site_button_functionBar}    xpath=//

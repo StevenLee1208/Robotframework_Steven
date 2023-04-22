@@ -1,0 +1,17 @@
+*** Setting ***
+Library    AppiumLibrary
+Resource    ../Keyword/CommonMethod.txt
+Resource    ../Variable/CategoryPageVariable.txt
+
+*** Keywords ***
+Click category on left function column of category page
+    [Arguments]    ${locator}
+    ${is_visible} =  Run Keyword And Return Status    Page Should Contain Element    ${locator}
+    Run Keyword If    ${is_visible}==${False}    Click Element If It Is Visible    ${category_button_life}
+    ${is_visible} =  Run Keyword And Return Status    Page Should Contain Element    ${locator}
+    Run Keyword If    ${is_visible}==${False}    Click Element If It Is Visible    ${category_button_home}
+    Click Element After It Is Visible    ${locator}    5
+
+Click see more button in the upper right corner of category page
+    Click Element After It Is Visible    ${category_button_seeMore}    2
+    Wait Until Element Should Be Visible    ${index_textbox_search}    5
